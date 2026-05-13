@@ -11,6 +11,7 @@ const NavBar = () => {
                     <li><Link href="/destinations">Destinations</Link></li>
                     <li><Link href="/myBookings">My Bookings</Link></li>
                     <li><Link href="/admin">Admin</Link></li>
+                    <li><Link href="/add-destination">Add Destination</Link></li>
                 </ul>
 
                 <Image src="/assets/WanderLast.png" alt="Logo" width={200} height={50} />
