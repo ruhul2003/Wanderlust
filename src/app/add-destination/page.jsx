@@ -3,11 +3,28 @@ import React from 'react';
 import { Button, FieldError, Input, Label, ListBox, Select, TextArea, TextField } from "@heroui/react";
 
 const AddDestinationPage = () => {
+  const onSubmit=async (e)=>{
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const destination=Object.fromEntries(formData.entries());
+    console.log(destination);
+
+   const res = await fetch('http://localhost:5000/destinations',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify(destination)
+    })
+
+    const data = await res.json();
+    console.log(data);
+  }
     return (
         <div>
               <h1 className="text-4xl font-bold mt-10 mb-8 text-center">Add New Destination</h1>
-            <form
-            className="p-10 space-y-8"
+            <form onSubmit={onSubmit}
+            className="p-10 space-y-8 bg-white shadow-md rounded-3xl max-w-4xl mx-auto"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Destination Name */}
